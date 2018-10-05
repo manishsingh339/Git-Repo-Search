@@ -1,0 +1,33 @@
+.search-container {
+    .filter-container{
+        margin: 20px auto;
+        .row{
+            align-items: center;
+        }
+        #langDropdownMenuLink {
+            width: 100%;
+            text-align: left;
+            &:after{
+                position: absolute;
+                right: 10px;
+                top: 15px;
+            }
+        }
+        #keyword-input{
+            border: 1px solid #dfdfdf;
+            padding: 7px 10px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .range-title{
+            font-size: 12px;
+        }
+        .input-range__track{
+            background-color: #aaaaaa;
+        }
+        .input-range__label--value{
+            bottom: -1.8rem;
+            top: unset;
+        }
+    }
+}

@@ -9,11 +9,14 @@ import registerServiceWorker from './registerServiceWorker';
 import rootReducers from './reducers';
 import App from './components/App'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap';
+import 'font-awesome/css/font-awesome.min.css';
+
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 
-
 ReactDOM.render(
-    <Provider store="createStoreWithMiddleware(rootReducers)">
+    <Provider store={createStoreWithMiddleware(rootReducers)}>
         <App/>
     </Provider>
     , document.getElementById('root'));
