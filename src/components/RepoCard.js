@@ -4,7 +4,7 @@ import '../scss/repo-card.scss';
 const RepoCard = (props) => {
     console.log(props);
     return(
-        <div className="col-sm-4">
+        <div className="col-sm-4 col">
             <div className="repo-card">
                 <div className="card-top">
                     <div className="image-container">

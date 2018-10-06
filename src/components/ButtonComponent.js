@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ButtonComponent = (props) => {
     return (
         <div>
-            <button type="button" className="btn btn-secondary" onClick={props.onClick}>Search</button>
+            <button type="button" className="btn btn-primary" onClick={props.onClick}>Search</button>
         </div>
     )
 }

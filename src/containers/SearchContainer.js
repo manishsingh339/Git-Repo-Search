@@ -10,6 +10,7 @@ import langs from '../configs/langs';
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import '../scss/search-container.scss';
+import Pagination from 'react-js-pagination'
 
 class SearchContainer extends Component {
 
@@ -19,15 +20,18 @@ class SearchContainer extends Component {
             filter: {
                 language: null,
                 keyword: null,
-                star: 10
+                star: 0
             },
-            repos: []
+            repos: [],
+            activePage: 1,
+            perPageResultCount: 9
         }
         this.onKeywordChange = this.onKeywordChange.bind(this);
         this.getReposList = this.getReposList.bind(this);
         this.onLangChange = this.onLangChange.bind(this);
         this.renderRepoCards = this.renderRepoCards.bind(this);
         this.onStartChange = this.onStartChange.bind(this);
+        this.handlePageChange = this.handlePageChange.bind(this);
     };
 
     onKeywordChange(event) {
@@ -54,11 +58,16 @@ class SearchContainer extends Component {
         });
     }
 
-    getReposList() {
+    getReposList(pageNob) {
+        this.setState({
+            activePage: pageNob || 1 
+        });
         const params = {
             q: null,
             sort: 'stars',
-            order: 'desc'
+            order: 'desc',
+            per_page: this.state.perPageResultCount,
+            page: this.state.activePage,
         };
         params.q = `${this.state.filter.keyword}language:${this.state.filter.language}stars:>=${this.state.filter.star}`;
         this.props.searchRepos(params);
@@ -74,30 +83,51 @@ class SearchContainer extends Component {
             : null);
     }
 
+    handlePageChange(pageNumber) {
+        this.getReposList(pageNumber)
+    }
+
     render() {
         console.log(this.props);
         return (
             <div className="search-container">
                 <div className="filter-container container">
-                    <div className="row">
-                        <div className="col-md-3">
+                    <div className="filter-header row">
+                        Search Filter
+                    </div>
+                    <div className="row filter-items-container">
+                        <div className="col-md-3 filter-item">
                             <SelectComponent onChange={this.onLangChange} selected={this.state.filter.language} options={langs} />
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 filter-item">
                             <TextBoxComponent onChange={this.onKeywordChange} />
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 filter-item">
                         <div className="range-title">Select minimum start</div>
                             <InputRange maxValue={10000} minValue={0} value={this.state.filter.star} onChange={this.onStartChange} />
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 filter-item filter-search">
                             <ButtonComponent onClick={this.getReposList} />
                         </div>
                     </div>
                 </div>
-                <div className="card-details-container">
+                <div className="card-details-container container">
+                    <div className="card-list-header row">
+                        Repo Search Result
+                    </div>
                     <div className="card-list-container container">
                         <div>{this.renderRepoCards()}</div>
+                    </div>
+                    <div className="card-pagination">
+                        {!!this.props.repos && !!this.props.repos.total_count ?
+                            <Pagination
+                                activePage={this.state.activePage}
+                                itemsCountPerPage={this.state.perPageResultCount}
+                                totalItemsCount={this.props.repos.total_count}
+                                pageRangeDisplayed={7}
+                                onChange={this.handlePageChange}
+                            />
+                        : null}
                     </div>
                 </div>
             </div>

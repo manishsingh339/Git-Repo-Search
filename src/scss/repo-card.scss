@@ -29,6 +29,9 @@
             width: 290px;
             white-space: nowrap;
             overflow: hidden;
+            @media (max-width: 768px) {
+                width: 260px;
+            }
         }
     }
     .card-bottom {
@@ -53,6 +56,14 @@
                     padding-right: 2px;
                     font-weight: 700;
                 }
+                @media (max-width: 768px) {
+                    display: block;
+                    margin-top: 10px;
+                    padding-left: 20px;
+                }
+            }
+            @media (max-width: 768px) {
+                display: block;
             }
         }
         .description {
