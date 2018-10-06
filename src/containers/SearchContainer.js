@@ -93,7 +93,7 @@ class SearchContainer extends Component {
             <div className="search-container">
                 <div className="filter-container container">
                     <div className="filter-header row">
-                        Search Filter
+                        Git Repo Search Filter
                     </div>
                     <div className="row filter-items-container">
                         <div className="col-md-3 filter-item">
@@ -136,7 +136,6 @@ class SearchContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    //console.log(state);
     return {
         repos: state.reposData.repos
     }
