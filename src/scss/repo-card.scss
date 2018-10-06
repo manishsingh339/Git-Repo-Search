@@ -1,0 +1,104 @@
+.repo-card {
+    background-color: #ffffff;
+    font-size: 16px;
+    max-width: 360px;
+    padding-top: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #333333;
+    .card-top {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        text-transform: capitalize;
+        .image-container {
+            width: 150px;
+            height: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            img {
+                border-radius: 50%;
+                width: inherit;
+                height: inherit;
+                box-shadow: 0px 0px 21px 5px lightgrey;
+            }
+        }
+        .repo-title {
+            padding-top: 25px;
+            text-overflow: ellipsis;
+            width: 290px;
+            white-space: nowrap;
+            overflow: hidden;
+            @media (max-width: 768px) {
+                width: 260px;
+            }
+        }
+    }
+    .card-bottom {
+        .tag-container {
+            font-size: 12px;
+            margin: 15px 0 10px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            .tag-item {
+                text-decoration: none;
+                color: inherit;
+                border: 1px solid lightgrey;
+                padding: 4px 8px;
+                border-radius: 20px;
+                &:hover{
+                    background-color: #50a6ff;
+                    text-decoration: none;
+                    border-color: transparent;
+                }
+                i {
+                    padding-right: 2px;
+                    font-weight: 700;
+                }
+                @media (max-width: 768px) {
+                    display: block;
+                    margin-top: 10px;
+                    padding-left: 20px;
+                }
+            }
+            @media (max-width: 768px) {
+                display: block;
+            }
+        }
+        .description {
+            color: #757677;
+            font-size: 12px;
+            height: 40px;
+            overflow: hidden;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: 37px;
+        }
+        .profile-link-container {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333333;
+            text-transform: uppercase;
+            display: block;
+            text-align: center;
+            margin-left: -30px;
+            margin-right: -30px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            &:hover {
+                background-color: #50a6ff;
+                text-decoration: none;
+                .view-profile-text {
+                    border: none;
+                }
+            }
+            .view-profile-text {
+                border-top: 1.5px solid #f1f1f1;
+                padding-top: 22px;
+            }
+        }
+    }
+}
